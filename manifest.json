@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "PNU Auto Login",
+  "version": "1.0.0",
+  "description": "PLATO와 학지시에 자동 로그인하는 부산대학교 전용 확장 프로그램",
+  "permissions": ["storage"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "PNU Auto Login",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "32": "images/icon32.png"
+    }
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "*://plato.pusan.ac.kr/*",
+        "*://onestop.pusan.ac.kr/*",
+        "*://login.pusan.ac.kr/onestop/loginPage*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
